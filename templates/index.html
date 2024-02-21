@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chick Counting with YOLO</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Chick Counting with YOLO</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="file">Upload an image:</label>
+            <input type="file" name="file" accept="image/*" id="file" required>
+            <button type="submit">Count Chicks</button>
+        </form>
+        {% if result %}
+            <p>Number of chicks: {{ result }}</p>
+            <img src="{{ url_for('static', filename=result_image) }}" alt="Chick Count">
+        {% endif %}
+    </div>
+</body>
+</html>
